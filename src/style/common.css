@@ -1,0 +1,44 @@
+.error-txt {
+    display: block;
+    margin-top: 8%;
+    color: #76889e;
+    text-align: center;
+    font-size: 24px;
+}
+
+.el-submenu__icon-arrow {
+    top: 56%;
+    margin-top: -14px;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.el-button {
+    margin: 0 2px;
+}
+
+.el-button--mini, .el-button--mini.is-round {
+    padding: 6px 14px;
+}
+
+.popover-tip-op, .popover-tip-val {
+    padding: 0 2px;
+    color: red;
+}
+
+.content-wrapper .el-card__body {
+    padding: 10px;
+}
+
+.cell #cell-icon {
+    font-size: 16px;
+}
+
+.table-div {
+    margin-top: 5px;
+}
+
+.table-page {
+    margin: 10px auto 0 auto;
+    text-align: right;
+}
