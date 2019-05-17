@@ -20,7 +20,7 @@
             <el-table-column prop="mobile" label="手机号" width="100" align="center" show-overflow-tooltip></el-table-column>
             <el-table-column prop="identity" label="身份标识" width="100" align="center">
                 <template slot-scope="scope">
-                    <el-tag v-if="1 === scope.row.identity" size="mini" type="info">普通用户</el-tag>
+                    <el-tag v-if="1 === scope.row.identity" size="mini" type="info">普通管理员</el-tag>
                     <el-tag v-else-if="2 === scope.row.identity" size="mini" type="success">超级管理员</el-tag>
                 </template>
             </el-table-column>
