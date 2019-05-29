@@ -42,3 +42,8 @@
     margin: 10px auto 0 auto;
     text-align: right;
 }
+
+.filter-container{
+    padding: 10px 0;
+    background: #eee;
+}

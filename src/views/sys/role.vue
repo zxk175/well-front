@@ -1,11 +1,22 @@
 <template>
     <div class="table-div">
-        <el-form :inline="true">
+        <el-form :inline="true" size="small" label-position="left">
+            <el-form-item label="角色名">
+                <el-input placeholder="请输入角色名"
+                          v-model="roleName"
+                          size="small"
+                          clearable/>
+            </el-form-item>
             <el-form-item>
-                <el-button type="primary" size="small" icon="el-icon-plus" @click.native="saveOrModifyData(0)" v-has="'sys:role:save'">新增</el-button>
-                <el-button type="danger" size="small" icon="el-icon-delete" @click.native="deleteBatchData" v-has="'sys:role:remove'" :disabled="deleteArr.length <= 0">批量删除</el-button>
+                <el-button type="primary" icon="el-icon-search" size="small" @click.native="search">查询</el-button>
+                <el-button type="danger" icon="el-icon-delete" size="small" @click.native="clear">清除条件</el-button>
             </el-form-item>
         </el-form>
+
+        <div class="filter-container">
+            <el-button type="primary" icon="el-icon-plus" size="small" @click.native="saveOrModifyData(0)" v-has="'sys:role:save'">新增</el-button>
+            <el-button type="danger" icon="el-icon-delete" size="small" @click.native="deleteBatchData" v-has="'sys:role:remove'" :disabled="deleteArr.length <= 0">批量删除</el-button>
+        </div>
 
         <el-table :data="tableData" ref="multiTable" row-key="menuId" height="480" size="mini" @selection-change="selectionChange" stripe border>
             <el-table-column type="selection" label="1" width="50" align="center"></el-table-column>
@@ -68,6 +79,7 @@
                 userAvatar: require('../../assets/images/avatar.png'),
                 deleteArr: [],
                 tableData: [],
+                roleName: "",
             };
         },
         created() {
@@ -83,6 +95,16 @@
 
             genIndex(index) {
                 return this.paging.size * (this.paging.page - 1) + index + 1;
+            },
+
+            search: function () {
+                this.listData();
+            },
+
+            clear: function () {
+                this.roleName = "";
+
+                this.listData();
             },
 
             listData() {
@@ -106,7 +128,9 @@
                     // 页码
                     page: that.paging.page,
                     // 页面大小
-                    size: that.paging.size
+                    size: that.paging.size,
+
+                    roleName: that.roleName
                 };
             },
 
