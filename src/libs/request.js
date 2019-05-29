@@ -149,7 +149,7 @@ export const checkErrorStatus = (err) => {
                 error("服务器内部错误");
                 break;
             case 502:
-                error("服务器宕机了，请联系管理员");
+                error("网络错误或服务器关闭");
                 break;
             default:
                 error(`(${status}) 未知错误`);
