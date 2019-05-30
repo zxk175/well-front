@@ -1,11 +1,22 @@
 <template>
     <div class="table-div">
-        <el-form :inline="true">
+        <el-form :inline="true" size="small" label-position="left">
+            <el-form-item label="手机号">
+                <el-input placeholder="请输入手机号"
+                          v-model="mobile"
+                          size="small"
+                          clearable/>
+            </el-form-item>
             <el-form-item>
-                <el-button type="primary" size="small" icon="el-icon-plus" @click.native="saveOrModifyData(0)" v-has="'sys:user:save'">新增</el-button>
-                <el-button type="danger" size="small" icon="el-icon-delete" @click.native="deleteBatchData" v-has="'sys:user:remove'" :disabled="deleteArr.length <= 0">批量删除</el-button>
+                <el-button type="primary" icon="el-icon-search" size="small" @click.native="search">查询</el-button>
+                <el-button type="danger" icon="el-icon-delete" size="small" @click.native="clear">清除条件</el-button>
             </el-form-item>
         </el-form>
+
+        <div class="filter-container">
+            <el-button type="primary" size="small" icon="el-icon-plus" @click.native="saveOrModifyData(0)" v-has="'sys:user:save'">新增</el-button>
+            <el-button type="danger" size="small" icon="el-icon-delete" @click.native="deleteBatchData" v-has="'sys:user:remove'" :disabled="deleteArr.length <= 0">批量删除</el-button>
+        </div>
 
         <el-table :data="tableData" ref="multiTable" row-key="menuId" height="480" size="mini" @selection-change="selectionChange" stripe border>
             <el-table-column type="selection" label="1" width="50" align="center"></el-table-column>
@@ -97,6 +108,16 @@
                 return this.paging.size * (this.paging.page - 1) + index + 1;
             },
 
+            search: function () {
+                this.listData();
+            },
+
+            clear: function () {
+                this.mobile = '';
+
+                this.listData();
+            },
+
             listData() {
                 let that = this;
                 const params = that.getParams();
@@ -106,7 +127,6 @@
                         that.paging.total = res.extra.total;
                         that.tableData = res.data;
                     } else {
-                        error(res.msg);
                         that.tableData = [];
                     }
                 });

@@ -79,7 +79,7 @@
                 userAvatar: require('../../assets/images/avatar.png'),
                 deleteArr: [],
                 tableData: [],
-                roleName: "",
+                roleName: '',
             };
         },
         created() {
@@ -102,7 +102,7 @@
             },
 
             clear: function () {
-                this.roleName = "";
+                this.roleName = '';
 
                 this.listData();
             },

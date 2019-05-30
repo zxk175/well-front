@@ -123,10 +123,10 @@ export const put = (url, params, success, error) => {
 
 export const checkSuccessStatus = (res) => {
     const status = res.code;
-    if (status === -1 || status >= 1) {
-        res.success ? success(`${res.msg}`) : error(`${res.msg}`);
+    if (res.success && (status === -1 || status >= 3)) {
+        success(`${res.msg}`);
     } else {
-        if (!res.success) {
+        if (status === -1 || status >= 3) {
             error(`${res.msg}`);
         }
     }
