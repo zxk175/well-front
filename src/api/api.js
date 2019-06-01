@@ -1,6 +1,6 @@
 // 基础请求地址
-// const BASE_URL = 'http://localhost:8010/well/api';
-const BASE_URL = 'https://well.zxk175.com/well/api';
+const BASE_URL = 'http://localhost:7000/user';
+// const BASE_URL = 'https://well.zxk175.com/well/api';
 
 
 export const LOGIN = BASE_URL + '/sys/login/v1';
@@ -27,5 +27,3 @@ export const SYS_ROLE_REMOVE = BASE_URL + '/sys-role/remove/batch/v1';
 export const SYS_ROLE_INFO = BASE_URL + "/sys-role/info/{0}/v1";
 export const SYS_ROLE_SAVE = BASE_URL + "/sys-role/save/v1";
 export const SYS_ROLE_MODIFY = BASE_URL + "/sys-role/modify/v1";
-
-
