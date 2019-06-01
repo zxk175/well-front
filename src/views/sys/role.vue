@@ -13,7 +13,7 @@
             </el-form-item>
         </el-form>
 
-        <div class="filter-container">
+        <div class="tool-container">
             <el-button type="primary" icon="el-icon-plus" size="small" @click.native="saveOrModifyData(0)" v-has="'sys:role:save'">新增</el-button>
             <el-button type="danger" icon="el-icon-delete" size="small" @click.native="deleteBatchData" v-has="'sys:role:remove'" :disabled="deleteArr.length <= 0">批量删除</el-button>
         </div>

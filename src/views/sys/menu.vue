@@ -1,10 +1,8 @@
 <template>
     <div class="table-div">
-        <el-form :inline="true">
-            <el-form-item>
-                <el-button type="primary" size="small" icon="el-icon-plus" @click.native="saveOrModifyData(0)" v-has="'sys:menu:save'">新增</el-button>
-            </el-form-item>
-        </el-form>
+        <div class="tool-container">
+            <el-button type="primary" size="small" icon="el-icon-plus" @click.native="saveOrModifyData(0)" v-has="'sys:menu:save'">新增</el-button>
+        </div>
 
         <el-table :data="tableData" :indent="6" row-key="menuId" height="480" size="mini" stripe border>
             <el-table-column prop="menuId" label="Id" width="260" align="center"></el-table-column>
