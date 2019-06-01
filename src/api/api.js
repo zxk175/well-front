@@ -1,6 +1,6 @@
 // 基础请求地址
-const BASE_URL = 'http://localhost:7000/user';
-// const BASE_URL = 'https://well.zxk175.com/well/api';
+// const BASE_URL = 'http://localhost:7000/user';
+const BASE_URL = 'https://well.zxk175.com/well/api';
 
 
 export const LOGIN = BASE_URL + '/sys/login/v1';
