@@ -19,7 +19,7 @@ export function listMenu(success, error) {
 }
 
 export function removeMenu(params, success, error) {
-    post(API.SYS_MENU_REMOVE, params, function (res) {
+    postAuth(API.SYS_MENU_REMOVE, params, function (res) {
         defSuccess(success, res);
     }, function (err) {
         defError(error, err);
