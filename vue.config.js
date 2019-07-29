@@ -1,14 +1,11 @@
+'use strict';
+
+const OptimizeCssPlugin = require('optimize-css-assets-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+
 const env = process.env.NODE_ENV;
 const isDev = 'dev' === env;
 const isProd = 'prod' === env;
-
-const externals = {
-    'vue': 'Vue',
-    'vuex': 'Vuex',
-    'axios': 'axios',
-    'vue-router': 'VueRouter',
-    'element-ui': 'ELEMENT',
-};
 
 const cdn = {
     css: [
@@ -43,9 +40,26 @@ module.exports = {
         console.error("\n   运行环境：" + env + "\n");
 
         if (isProd) {
-            Object.assign(config, {
-                externals: externals
-            });
+            config.externals =  {
+                'vue': 'Vue',
+                'vuex': 'Vuex',
+                'axios': 'axios',
+                'vue-router': 'VueRouter',
+                'element-ui': 'ELEMENT',
+            };
+
+            config.plugins.push(
+                new UglifyJsPlugin({
+                    uglifyOptions: {
+                        compress: {
+                            drop_debugger: true,
+                            drop_console: true,
+                        },
+                    },
+                    sourceMap: false,
+                    parallel: true,
+                })
+            )
         }
     },
     chainWebpack: config => {
