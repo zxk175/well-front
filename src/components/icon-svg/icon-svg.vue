@@ -33,7 +33,7 @@
             },
 
             getSvgFlag() {
-                return this.name.toString().indexOf("el-icon") == -1;
+                return this.name.toString().indexOf("el-icon") === -1;
             },
 
             getClass() {
