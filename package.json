@@ -16,10 +16,6 @@
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.9.2",
     "@vue/cli-service": "^3.9.3",
-    "imagemin": "^6.1.0",
-    "imagemin-jpegtran": "^6.0.0",
-    "imagemin-pngquant": "^7.0.0",
-    "img-loader": "^3.0.1",
     "less": "^3.0.4",
     "less-loader": "^4.1.0",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
