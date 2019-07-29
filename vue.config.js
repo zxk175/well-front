@@ -46,26 +46,24 @@ module.exports = {
 
         console.error("\n   运行环境：" + env + "\n");
 
-        if (isProd) {
-            return {
-                plugins: [
-                    new UglifyJsPlugin({
-                        uglifyOptions: {
-                            compress: {
-                                drop_console: true,
-                                drop_debugger: true,
-                            },
+        return {
+            plugins: [
+                new UglifyJsPlugin({
+                    uglifyOptions: {
+                        compress: {
+                            drop_console: true,
+                            drop_debugger: true,
                         },
-                        sourceMap: false,
-                        parallel: true,
-                    }),
+                    },
+                    sourceMap: false,
+                    parallel: true,
+                }),
 
-                    new OptimizeCssPlugin(),
+                new OptimizeCssPlugin(),
 
-                    new BundleAnalyzerPlugin()
-                ]
-            };
-        }
+                new BundleAnalyzerPlugin()
+            ]
+        };
     },
     chainWebpack: (config) => {
         config.plugins.delete('prefetch');
