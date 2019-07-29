@@ -65,10 +65,11 @@
     }
 
     .menu-icon {
+        margin-right: 0;
         width: 24px;
+        vertical-align: middle;
         text-align: center;
         font-size: 18px;
-        vertical-align: middle;
     }
 
     .if16 {
