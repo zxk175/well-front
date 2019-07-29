@@ -74,8 +74,6 @@ module.exports = {
         config.plugin('html').tap(args => {
             args[0].chunksSortMode = 'none';
 
-            args[0].minify = false;
-
             args[0].cdn = cdn;
 
             return args;
