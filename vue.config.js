@@ -81,7 +81,9 @@ module.exports = {
         });
     },
     css: {
-        extract: true,
+        // 是否使用css分离插件
+        // ExtractTextPlugin
+        extract: false,
         sourceMap: isDev,
         modules: false,
         loaderOptions: {
