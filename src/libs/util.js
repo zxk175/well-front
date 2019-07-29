@@ -109,8 +109,8 @@ export const defError = (errorCb, errMsg) => {
     }
 };
 
-export const isProd = () => {
-    return 'prod' === process.env.NODE_ENV;
+export const isDev = () => {
+    return 'dev' === process.env.NODE_ENV;
 };
 
 export const isArray = (param) => {
