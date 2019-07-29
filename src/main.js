@@ -3,8 +3,6 @@ import App from './App.vue'
 import store from './store'
 import config from './config'
 import router from './router'
-import Element from 'element-ui'
-import 'element-ui/lib/theme-chalk/index.css'
 import './assets/css/common.css'
 import './assets/icons/ali/iconfont.js'
 import directive from './directive'
@@ -15,7 +13,6 @@ import {getSsItem, setSsItem} from './libs/storage'
 // 注册指令
 directive(Vue);
 
-Vue.use(Element);
 Vue.component('IconSvg', IconSvg);
 
 // 全局注册应用配置

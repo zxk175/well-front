@@ -36,18 +36,18 @@ module.exports = {
             filename: 'js/[name].[hash:8].js'
         };
 
+        config.externals = {
+            'vue': 'Vue',
+            'vuex': 'Vuex',
+            'axios': 'axios',
+            'vue-router': 'VueRouter',
+            'element-ui': 'ELEMENT',
+        };
+
         console.error("\n   运行环境：" + env + "\n");
 
         if (isProd) {
             return {
-                externals: {
-                    'vue': 'Vue',
-                    'vuex': 'Vuex',
-                    'axios': 'axios',
-                    'vue-router': 'VueRouter',
-                    'element-ui': 'ELEMENT',
-                },
-
                 plugins: [
                     new UglifyJsPlugin({
                         uglifyOptions: {
@@ -76,9 +76,9 @@ module.exports = {
         config.plugin('html').tap(args => {
             args[0].chunksSortMode = 'none';
 
-            if (isProd) {
-                args[0].cdn = cdn;
-            }
+            args[0].minify = false;
+
+            args[0].cdn = cdn;
 
             return args;
         });

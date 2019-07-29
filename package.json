@@ -6,7 +6,7 @@
     "dev": "vue-cli-service serve --mode dev",
     "build": "vue-cli-service build --mode prod",
     "inspect": "vue-cli-service inspect --mode prod",
-    "analyz": "NODE_ENV=prod npm_config_report=true npm run build"
+    "report": "vue-cli-service build --report --mode prod"
   },
   "dependencies": {
     "axios": "^0.19.0",
