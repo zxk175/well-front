@@ -121,7 +121,7 @@
                                 error(res.msg);
                                 that.initStatus();
                             }
-                        }, function (err) {
+                        }, function () {
                             that.initStatus();
                         });
                     } else {
