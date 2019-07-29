@@ -1,7 +1,7 @@
 'use strict';
 
 const OptimizeCssPlugin = require('optimize-css-assets-webpack-plugin');
-const ParallelUglifyPlugin = require('webpack-parallel-uglify-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 const env = process.env.NODE_ENV;
 const isDev = 'dev' === env;
@@ -40,31 +40,32 @@ module.exports = {
         console.error("\n   运行环境：" + env + "\n");
 
         if (isProd) {
-            config.externals =  {
-                'vue': 'Vue',
-                'vuex': 'Vuex',
-                'axios': 'axios',
-                'vue-router': 'VueRouter',
-                'element-ui': 'ELEMENT',
-            };
+            return {
+                externals:{
+                    'vue': 'Vue',
+                    'vuex': 'Vuex',
+                    'axios': 'axios',
+                    'vue-router': 'VueRouter',
+                    'element-ui': 'ELEMENT',
+                },
 
-            config.plugins.push(
-                new ParallelUglifyPlugin({
-                    cacheDir: '.cache/',
-                    uglifyJS:{
-                        output: {
-                            comments: false
+                plugins: [
+                    // 压缩js
+                    new UglifyJsPlugin({
+                        uglifyOptions: {
+                            compress: {
+                                drop_console: true,
+                                drop_debugger: true,
+                            },
                         },
-                        compress: {
-                            drop_debugger: true,
-                            drop_console: true,
-                        }
-                    }
-                }),
+                        sourceMap: false,
+                        parallel: true,
+                    }),
 
-                // 压缩提取出的css
-                new OptimizeCssPlugin()
-            )
+                    // 压缩css
+                    new OptimizeCssPlugin()
+                ]
+            };
         }
     },
     chainWebpack: config => {
