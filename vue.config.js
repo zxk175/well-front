@@ -1,7 +1,7 @@
 'use strict';
 
 const OptimizeCssPlugin = require('optimize-css-assets-webpack-plugin');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const ParallelUglifyPlugin = require('webpack-parallel-uglify-plugin');
 
 const env = process.env.NODE_ENV;
 const isDev = 'dev' === env;
@@ -49,16 +49,21 @@ module.exports = {
             };
 
             config.plugins.push(
-                new UglifyJsPlugin({
-                    uglifyOptions: {
+                new ParallelUglifyPlugin({
+                    cacheDir: '.cache/',
+                    uglifyJS:{
+                        output: {
+                            comments: false
+                        },
                         compress: {
                             drop_debugger: true,
                             drop_console: true,
-                        },
-                    },
-                    sourceMap: false,
-                    parallel: true,
-                })
+                        }
+                    }
+                }),
+
+                // 压缩提取出的css
+                new OptimizeCssPlugin()
             )
         }
     },
