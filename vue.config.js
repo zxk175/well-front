@@ -40,8 +40,8 @@ module.exports = {
             'vue': 'Vue',
             'vuex': 'Vuex',
             'axios': 'axios',
-            'vue-router': 'VueRouter',
             'element-ui': 'ELEMENT',
+            'vue-router': 'VueRouter'
         };
 
         console.error("\n   运行环境：" + env + "\n");
