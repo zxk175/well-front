@@ -33,8 +33,8 @@ module.exports = {
         config.output = {
             path: config.output.path,
             publicPath: config.output.publicPath,
-            chunkFilename: '[name].[hash:8].js',
-            filename: '[name].[hash:8].js'
+            chunkFilename: 'js/[name].[hash:8].js',
+            filename: 'js/[name].[hash:8].js'
         };
 
         console.error("\n   运行环境：" + env + "\n");
