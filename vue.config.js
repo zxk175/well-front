@@ -1,5 +1,6 @@
 'use strict';
 
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const OptimizeCssPlugin = require('optimize-css-assets-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
@@ -59,7 +60,9 @@ module.exports = {
                         parallel: true,
                     }),
 
-                    new OptimizeCssPlugin()
+                    new OptimizeCssPlugin(),
+
+                    new BundleAnalyzerPlugin()
                 ]
             };
         }
