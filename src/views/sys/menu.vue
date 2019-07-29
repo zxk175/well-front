@@ -25,7 +25,7 @@
             <el-table-column label="操作" width="160" align="center" fixed="right">
                 <template slot-scope="scope">
                     <el-popover placement="top" trigger="click" :ref="scope.row.menuId + 'del'">
-                        <p>确定对<span class="popover-tip-val">{{scope.row.name}}</span>进行<span class="popover-tip-op">{{scope.row.state === 0 ? '恢复' : '删除'}}</span>操作?</p>
+                        <p>确定<span class="popover-tip-val">{{scope.row.name}}</span>进行<span class="popover-tip-op">{{scope.row.state === 0 ? '恢复' : '删除'}}</span>操作?</p>
                         <div style="text-align: right; margin: 0;">
                             <el-button type="text" size="mini" @click.native="hideDelPopover(scope.row.menuId, 'del')">取消</el-button>
                             <el-button type="primary" size="mini" @click.native="deleteData(scope.row, scope.row.state === 0 ? 1 : 0)">确定</el-button>

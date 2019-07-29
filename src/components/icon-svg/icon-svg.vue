@@ -55,7 +55,7 @@
     }
 </script>
 
-<style>
+<style scoped>
     .icon-svg {
         overflow: hidden;
         width: 1em;
@@ -65,7 +65,6 @@
     }
 
     .menu-icon {
-        margin-right: 5px;
         width: 24px;
         text-align: center;
         font-size: 18px;

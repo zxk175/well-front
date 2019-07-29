@@ -109,7 +109,7 @@ module.exports = {
     },
     css: {
         // 是否使用css分离插件 ExtractTextPlugin，采用独立样式文件载入
-        // 不采用<style>方式内联至html文件中
+        // 不采用<css>方式内联至html文件中
         extract: true,
         // 是否在构建样式地图，false将提高构建速度
         sourceMap: isDev,
