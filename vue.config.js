@@ -84,6 +84,19 @@ module.exports = {
 
             args[0].cdn = cdn;
 
+            args[0].minify = {
+                removeComments: true,
+                collapseWhitespace: true,
+                removeAttributeQuotes: false,
+                useShortDoctype: true,
+                removeEmptyAttributes: true,
+                removeStyleLinkTypeAttributes: true,
+                keepClosingSlash: true,
+                minifyJS: true,
+                minifyCSS: true,
+                minifyURLs: true,
+            };
+
             return args;
         });
     },
@@ -93,12 +106,7 @@ module.exports = {
         extract: false,
         modules: false,
         sourceMap: isDev,
-        loaderOptions: {
-            css: {
-                localIdentName: '[name].[hash:8]',
-                camelCase: 'only'
-            }
-        }
+        loaderOptions: {}
     },
     devServer: {
         open: true,
