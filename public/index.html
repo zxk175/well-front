@@ -12,6 +12,7 @@
     <% for (var i in htmlWebpackPlugin.options.cdn && htmlWebpackPlugin.options.cdn.css) { %>
     <link rel="stylesheet" href="<%= htmlWebpackPlugin.options.cdn.css[i] %>"/>
     <% } %>
+    <link rel="stylesheet" href="static/css/loader.css"/>
 </head>
 
 <body>
@@ -20,6 +21,16 @@
     <strong>很抱歉，如果没有启用JavaScript，项目不能正常工作。请启用它再继续操作。</strong>
 </noscript>
 <div id="app"></div>
+
+<div id="loader-wrapper">
+    <div id="loader"></div>
+    <div class="loader-section section-left"></div>
+    <div class="loader-section section-right"></div>
+    <div class="load_title">正在加载，请耐心等待
+        <br>
+        <span>v1.0.0</span>
+    </div>
+</div>
 
 <!-- 使用cdn加速的js文件，配置在vue.config.js -->
 <% for (var i in htmlWebpackPlugin.options.cdn && htmlWebpackPlugin.options.cdn.js) { %>

@@ -44,5 +44,14 @@ new Vue({
         window.addEventListener("beforeunload", () => {
             setSsItem(storeKey, JSON.stringify(this.$store.state))
         });
+    },
+    mounted(){
+        try {
+            setTimeout(function () {
+                document.body.removeChild(document.getElementById('loader-wrapper'));
+            }, 200)
+        } catch (err) {
+            console.log(err);
+        }
     }
 });
