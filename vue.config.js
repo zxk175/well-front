@@ -7,6 +7,7 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const env = process.env.NODE_ENV;
 const isDev = 'dev' === env;
 const isProd = 'prod' === env;
+const isReport = 'report' === env;
 
 const cdn = {
     css: [
@@ -46,25 +47,31 @@ module.exports = {
 
         console.error("\n   运行环境：" + env + "\n");
 
-        return {
-            plugins: [
-                new UglifyJsPlugin({
-                    uglifyOptions: {
-                        compress: {
-                            drop_console: true,
-                            drop_debugger: true,
-                        },
+        let plugs = [
+            new UglifyJsPlugin({
+                uglifyOptions: {
+                    compress: {
+                        drop_console: true,
+                        drop_debugger: true,
                     },
-                    sourceMap: false,
-                    parallel: true,
-                }),
+                },
+                sourceMap: false,
+                parallel: true,
+            }),
 
-                new OptimizeCssPlugin(),
+            new OptimizeCssPlugin()
+        ];
 
+        if (isReport) {
+            plugs.push(
                 new BundleAnalyzerPlugin({
                     analyzerPort: 1234
                 })
-            ]
+            )
+        }
+
+        return {
+            plugins: plugs
         };
     },
     chainWebpack: (config) => {
