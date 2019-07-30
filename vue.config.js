@@ -83,7 +83,7 @@ module.exports = {
         // 是否使用css分离插件
         // ExtractTextPlugin
         extract: false,
-        modules: true,
+        modules: false,
         sourceMap: isDev,
         loaderOptions: {
             css: {
