@@ -57,7 +57,7 @@
     </el-dialog>
 </template>
 
-<style lang="less">
+<style lang="less" scoped>
     .table-div {
         .menu-list__input,
         .icon-list__input {
@@ -99,7 +99,6 @@
 </style>
 
 <script>
-    import {successCb} from '../../libs/message'
     import {treeDataTranslate} from '../../libs/util'
     import {selectMenu, infoMenu, opMenu} from '../../api/sys/sys-menu'
 
@@ -238,10 +237,8 @@
 
                         opMenu(that.opFlag, params, function (res) {
                             if (res.success) {
-                                successCb(res.msg, function () {
-                                    that.visible = false;
-                                    that.$emit('refreshData');
-                                });
+                                that.visible = false;
+                                that.$emit('refreshData');
                             }
                         })
                     }

@@ -38,7 +38,6 @@
 
 <script>
     import {info, op} from '../../api/sys/sys-user'
-    import {successCb} from '../../libs/message'
     import {listRole} from '../../api/sys/sys-role'
 
     export default {
@@ -122,10 +121,8 @@
 
                         op(that.opFlag, params, function (res) {
                             if (res.success) {
-                                successCb(res.msg, function () {
-                                    that.visible = false;
-                                    that.$emit('refreshData');
-                                });
+                                that.visible = false;
+                                that.$emit('refreshData');
                             }
                         })
                     }

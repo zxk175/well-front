@@ -75,8 +75,8 @@
 </template>
 
 <script>
+    import {info} from '../../libs/message'
     import {list, remove} from '../../api/sys/sys-user'
-    import {success, error, info} from '../../libs/message'
     import SaveOrModify from '../../components/sys/user-save-or-modify'
 
     export default {
@@ -178,13 +178,9 @@
 
                 remove(params, function (res) {
                     if (res.success) {
-                        success(res.msg);
-
                         setTimeout(function () {
                             that.listData();
                         }, 500);
-                    } else {
-                        error(res.msg);
                     }
 
                     if (row.userId) {
