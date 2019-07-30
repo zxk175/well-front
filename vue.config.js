@@ -61,7 +61,9 @@ module.exports = {
 
                 new OptimizeCssPlugin(),
 
-                new BundleAnalyzerPlugin()
+                new BundleAnalyzerPlugin({
+                    analyzerPort: 1234
+                })
             ]
         };
     },
