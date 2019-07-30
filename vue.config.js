@@ -83,8 +83,8 @@ module.exports = {
         // 是否使用css分离插件
         // ExtractTextPlugin
         extract: false,
+        modules: true,
         sourceMap: isDev,
-        modules: false,
         loaderOptions: {
             css: {
                 localIdentName: '[name].[hash:8]',
