@@ -3,6 +3,7 @@
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const OptimizeCssPlugin = require('optimize-css-assets-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const path = require('path');
 
 const env = process.env.NODE_ENV;
 const isDev = 'dev' === env;
@@ -19,6 +20,10 @@ const cdn = {
         '//lib.baomitu.com/vue-router/3.0.6/vue-router.min.js',
         '//lib.baomitu.com/element-ui/2.11.1/index.js'
     ]
+};
+
+const resolve = (dir) => {
+    return path.join(__dirname, './', dir);
 };
 
 module.exports = {
@@ -99,6 +104,27 @@ module.exports = {
 
             return args;
         });
+
+        config.optimization.splitChunks({
+            chunks: 'all',
+            cacheGroups: {
+                vendors: {
+                    name: 'chunk-vendors',
+                    test: /[\\/]node_modules[\\/]/,
+                    priority: 10,
+                    chunks: 'initial',
+                },
+                commons: {
+                    name: 'chunk-commons',
+                    test: resolve('src/components'),
+                    minChunks: 3,
+                    priority: 5,
+                    reuseExistingChunk: true,
+                },
+            },
+        });
+
+        config.optimization.runtimeChunk('single');
     },
     css: {
         // 是否使用css分离插件
