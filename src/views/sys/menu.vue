@@ -44,7 +44,7 @@
 </template>
 
 <script>
-    import {success, error} from '../../libs/message'
+    import {info} from '../../libs/message'
     import {listMenu, removeMenu} from '../../api/sys/sys-menu'
     import SaveOrModify from '../../components/sys/menu-save-or-modify'
 
@@ -90,13 +90,9 @@
 
                 removeMenu(params, function (res) {
                     if (res.success) {
-                        success(res.msg);
-
                         setTimeout(function () {
                             that.listData();
                         }, 500);
-                    } else {
-                        error(res.msg);
                     }
 
                     that.hideDelPopover(menuId, 'del');
@@ -104,6 +100,7 @@
             },
 
             hideDelPopover(id, type) {
+                info("已取消删除");
                 this.$refs[id + type].doClose();
             },
         }

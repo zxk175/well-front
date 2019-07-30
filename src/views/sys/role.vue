@@ -64,8 +64,8 @@
 </template>
 
 <script>
+    import {error, info} from '../../libs/message'
     import {listRole, removeRole} from '../../api/sys/sys-role'
-    import {success, error, info} from '../../libs/message'
     import SaveOrModify from '../../components/sys/role-save-or-modify'
 
     export default {
@@ -159,13 +159,9 @@
 
                 removeRole(params, function (res) {
                     if (res.success) {
-                        success(res.msg);
-
                         setTimeout(function () {
                             that.listData();
                         }, 500);
-                    } else {
-                        error(res.msg);
                     }
 
                     if (row.roleId) {
@@ -199,6 +195,7 @@
             },
 
             hideDelPopover(id, type) {
+                info("已取消删除");
                 this.$refs[id + type].doClose();
             },
         }

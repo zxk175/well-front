@@ -217,6 +217,7 @@
             },
 
             hideDelPopover(id, type) {
+                info("已取消删除");
                 this.$refs[id + type].doClose();
             },
         }
