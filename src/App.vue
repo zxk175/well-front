@@ -24,9 +24,3 @@
         font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, SimSun, sans-serif;
     }
 </style>
-
-<script>
-    export default {
-        name: 'app'
-    }
-</script>

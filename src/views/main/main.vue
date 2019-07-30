@@ -69,7 +69,8 @@
                         margin: 10px 0 10px 10px;
                         width: 40px;
                         height: 40px;
-                        border-radius: 20px;
+                        border: 1px solid #fff;
+                        border-radius: 6px;
                     }
                 }
             }
@@ -138,6 +139,7 @@
 </style>
 
 <script>
+    import '../../assets/icons/ali/iconfont.js'
     import {getUser, setToken} from '../../libs/util'
     import SideMenu from '../../components/main/side-menu'
 
