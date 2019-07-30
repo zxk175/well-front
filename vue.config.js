@@ -8,6 +8,7 @@ const path = require('path');
 const env = process.env.NODE_ENV;
 const isDev = 'dev' === env;
 const isProd = 'prod' === env;
+const isReport = 'report' === env;
 
 const cdn = {
     css: [
@@ -54,6 +55,7 @@ module.exports = {
         let plugs = [
             new UglifyJsPlugin({
                 uglifyOptions: {
+                    warnings: false,
                     compress: {
                         drop_console: true,
                         drop_debugger: true,
@@ -66,7 +68,7 @@ module.exports = {
             new OptimizeCssPlugin()
         ];
 
-        if (isProd) {
+        if (isReport) {
             plugs.push(
                 new BundleAnalyzerPlugin({
                     analyzerPort: 1234
@@ -81,6 +83,7 @@ module.exports = {
     chainWebpack: (config) => {
         config.plugins.delete('prefetch');
         config.plugins.delete('preload');
+        config.plugins.delete('named-chunks');
 
         config.resolve.symlinks(true);
 
@@ -104,6 +107,18 @@ module.exports = {
 
             return args;
         });
+
+        config.module
+            .rule("images")
+            .use("image-webpack-loader")
+            .loader("image-webpack-loader")
+            .options({
+                mozjpeg: {progressive: true, quality: 65},
+                optipng: {enabled: false},
+                pngquant: {quality: "65-90", speed: 4},
+                gifsicle: {interlaced: false},
+                webp: {quality: 75}
+            });
 
         config.optimization.splitChunks({
             chunks: 'all',
