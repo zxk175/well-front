@@ -7,7 +7,6 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const env = process.env.NODE_ENV;
 const isDev = 'dev' === env;
 const isProd = 'prod' === env;
-const isReport = 'report' === env;
 
 const cdn = {
     css: [
@@ -62,7 +61,7 @@ module.exports = {
             new OptimizeCssPlugin()
         ];
 
-        if (isReport) {
+        if (isProd) {
             plugs.push(
                 new BundleAnalyzerPlugin({
                     analyzerPort: 1234
