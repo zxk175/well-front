@@ -12,14 +12,14 @@ const isReport = 'report' === env;
 
 const cdn = {
     css: [
-        '//lib.baomitu.com/element-ui/2.11.1/theme-chalk/index.css'
+        '//lib.baomitu.com/element-ui/2.12.0/theme-chalk/index.css'
     ],
     js: [
         '//lib.baomitu.com/vue/2.6.10/vue.min.js',
         '//lib.baomitu.com/vuex/3.0.1/vuex.min.js',
         '//lib.baomitu.com/axios/0.19.0/axios.min.js',
-        '//lib.baomitu.com/vue-router/3.0.6/vue-router.min.js',
-        '//lib.baomitu.com/element-ui/2.11.1/index.js'
+        '//lib.baomitu.com/vue-router/3.1.3/vue-router.min.js',
+        '//lib.baomitu.com/element-ui/2.12.0/index.js'
     ]
 };
 
